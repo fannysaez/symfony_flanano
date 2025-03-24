@@ -1,0 +1,10 @@
+{% extends 'admin.base.html.twig' %}
+
+{% block dashboard %}
+<section>
+    <div class="flex flex-column gap-10">
+        <h1>Tableau de bord</h1>
+        <h2>Bienvenue {{ app.user.email }} !</h2>
+    </div>
+</section>
+{% endblock %}

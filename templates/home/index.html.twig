@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+<section class="hero-container">
+    <a href="{{ path('shop_index') }}">
+        <div class="hero-column">
+            <img src="{{ asset('images/hero/img1.webp') }}" alt="Hero image" class="hero-image" id="left-image">
+        </div>
+    </a>
+    <a href="{{ path('shop_index') }}">
+        <div class="hero-column">
+            <img src="{{ asset('images/hero/img16.webp') }}" alt="Hero image" class="hero-image" id="right-image">
+        </div>
+    </a>
+
+    <script type="text/javascript">
+        window.heroImages = [
+            {% for i in 1..35 %}
+        "{{ asset('images/hero/img' ~ i ~ '.webp') }}"{% if not loop.last %}, {% endif %}
+        {% endfor %}
+        ];
+    </script>
+</section>
+
+<a href="{{ path('shop_odyssey') }}">
+    {% include '_components/scrolling_text.html.twig' with {
+    message: 'Nouveau look fashion Odyssey 🪐',
+    messageColor: 'bg-dark'
+    } %}
+</a>
+
+<section class="product-grid">
+    {% for product in products %}
+    {% include "_components/card.html.twig" %}
+    {% else %}
+    <p>Aucun produit disponible.</p>
+    {% endfor %}
+</section>
+
+<a href="{{ path('shop_product_show', {'id' : 3, 'categoryId': 1}) }}">
+    {% include '_components/scrolling_text.html.twig' with {
+    message: 'Nouveau eyeliner Flavedo & Albedo ✏️',
+    messageColor: 'bg-purple'
+    } %}
+</a>
+
+<section class="hero-container">
+    <div class="home-image">
+        <img src="{{ asset('images/home/pencil.webp') }}" alt="Pencil">
+    </div>
+    <div class="home-image">
+        <img src="{{ asset('images/home/face.webp') }}" alt="Face">
+    </div>
+</section>
+
+<section class="message-container bg-green flex flex-column align-item-center gap-10">
+    <h2>Flanano Love You 🫶🏻</h2>
+</section>
+
+{% endblock %}

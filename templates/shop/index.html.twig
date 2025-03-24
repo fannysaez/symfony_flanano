@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+<section class="category-container flex flex-column align-item-center">
+    <div class="flex flex-column gap-10">
+        <h3>{{ title }}
+            <span>
+                <img src="{{ asset('logo.svg') }}" alt="Logo Flanano">
+            </span>
+        </h3>
+        <p>{{ description }}</p>
+    </div>
+</section>
+
+<a href="{{ path('shop_product_show', {'id' : 3, 'categoryId': 1}) }}">
+    {% include '_components/scrolling_text.html.twig' with {
+    message: 'Nouveau eyeliner Flavedo & Albedo ✏️',
+    messageColor: 'bg-purple'
+    } %}
+</a>
+
+<section class="product-grid">
+    {% for product in products %}
+    {% include "_components/card.html.twig" %}
+    {% else %}
+    <p>Aucun produit disponible.</p>
+    {% endfor %}
+</section>
+{% endblock %}

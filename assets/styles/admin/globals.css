@@ -1,0 +1,155 @@
+@import url("components.css");
+@import url("utilities.css");
+
+@font-face {
+  font-family: "BDO Grotesk";
+  src: url("../../fonts/BDOGrotesk-VF.ttf") format("truetype");
+}
+
+:root {
+  /* Primary Color */
+  --color-dark: #000000;
+  --color-white: #ffffff;
+  --color-grey: #868686;
+  --color-text-grey: #cdcdcd;
+  --color-light-grey: #f4f4f4;
+
+  /* Secondary Color */
+  --color-purple: #adadf0;
+  --color-yellow: #f6ae60;
+  --color-red: #ed4732;
+  --color-green: #00be50;
+  --color-pink: #fdb4ab;
+
+  /* Font Family */
+  --font-family: "BDO Grotesk", "Arial", sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-bold: 600;
+
+  /* Tailles de police */
+  --font-size-min: 0.75rem;
+  --font-size-p: 1rem;
+  --font-size-h1: 1.875rem;
+  --font-size-h2: 1.5rem;
+  --font-size-h3: 1.25rem;
+
+  /* Line heights */
+  --line-height-min: 1rem;
+  --line-height-p: 1.25rem;
+  --line-height-h: 1.5625rem;
+}
+
+/* Font Style */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-h);
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+}
+
+p {
+  font-size: var(--font-size-p);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-p);
+}
+
+.p-min {
+  font-size: var(--font-size-min);
+  line-height: var(--line-height-min);
+  font-weight: var(--font-weight-bold);
+}
+
+.p-alert {
+  color: var(--color-red);
+}
+
+/* Layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+  font-size: var(--font-size-p);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-p);
+  transition: all 0.3s;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  color: var(--color-dark);
+  background-color: var(--color-white);
+}
+
+main {
+  display: flex;
+  max-width: 1920px;
+  width: 100%;
+  flex: 1;
+  border-right: solid 1px var(--color-text-grey);
+  border-left: solid 1px var(--color-grey);
+}
+
+dashboard {
+  display: flex;
+  flex-direction: column;
+  max-width: 1920px;
+  width: 100%;
+  min-height: 100vh;
+}
+
+section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 1920px;
+  width: 100%;
+  padding: 40px;
+}
+
+/* Reset */
+strong {
+  font-weight: var(--font-weight-bold);
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-dark);
+  cursor: pointer;
+}
+
+img {
+  pointer-events: none;
+  user-select: none;
+}
+
+button {
+  padding: 16px;
+  background-color: var(--color-dark);
+  color: var(--color-white);
+  border: none;
+  cursor: pointer;
+}

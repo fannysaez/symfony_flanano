@@ -1,0 +1,70 @@
+{% extends 'admin.base.html.twig' %}
+
+{% block dashboard %}
+<section class="gap-40">
+    <h1>Détails du Produit</h1>
+
+    <div class="flex gap-20">
+        <a class="btn btn-primary" href="{{ path('admin_product_index') }}">Retour à la liste</a>
+
+        <a class="btn btn-primary" href="{{ path('admin_product_edit', { id: product.id }) }}">Modifier</a>
+
+        <a class="btn btn-red delete-action"
+            data-url="{{ path('admin_product_delete', { id: product.id }) }}">Supprimer</a>
+    </div>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>ID</th>
+                <td>{{ product.id }}</td>
+            </tr>
+
+            <tr>
+                <th>Titre</th>
+                <td>{{ product.title }}</td>
+            </tr>
+
+            <tr>
+                <th>Description</th>
+                <td>{{ product.description }}</td>
+            </tr>
+
+            <tr>
+                <th>Prix HT</th>
+                <td>€ {{ product.priceht|number_format(2, '.', ' ') }}</td>
+            </tr>
+
+            <tr>
+                <th>Prix TTC</th>
+                <td>€ {{ product.getPriceTTC()|number_format(2, '.', ' ') }}</td>
+            </tr>
+
+            <tr>
+                <th>Catégorie</th>
+                <td>{{ product.category.name }}</td>
+            </tr>
+
+            <tr>
+                <th>URL image</th>
+                <td>{{ product.cover }}</td>
+            </tr>
+
+            <tr>
+                <th>Image</th>
+                <td><img src="{{ asset(product.cover) }}" alt="{{ product.title }}" width="300"></td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<div class="modal-overlay" id="confirmModal">
+    <div class="modal-content flex flex-column gap-20">
+        <p>Êtes-vous sûr de vouloir supprimer ce produit ?</p>
+        <div class="flex justify-center gap-20">
+            <button class="btn btn-red" id="confirmDelete">Supprimer</button>
+            <button class="btn btn-primary" id="cancelDelete">Annuler</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

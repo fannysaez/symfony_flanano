@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+<section class="login-container flex flex-column justify-center gap-10">
+    <form method="post">
+
+        {% if error %}
+        <p class="p-alert">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+        {% endif %}
+
+        <div>
+            <h1>Connectez-vous</h1>
+            <p>Vous êtes nouveaux ? <a class="text-link" href="{{ path('app_register') }}">Inscrivez-vous</a> !</p>
+        </div>
+
+        <div>
+            <label for="inputEmail">Email</label>
+            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"
+                autocomplete="email" placeholder="exemple@domaine.com" required autofocus>
+        </div>
+
+        <div>
+            <label for="inputPassword">Password</label>
+            <input type="password" name="password" id="inputPassword" class="form-control"
+                autocomplete="current-password" required>
+        </div>
+
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+        <div>
+            <label>
+                <input type="checkbox" name="_remember_me">
+                Se souvenir de moi
+            </label>
+        </div>
+
+        <button class="btn-primary" type="submit">
+            Connexion
+        </button>
+
+    </form>
+</section>
+{% endblock %}

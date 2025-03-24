@@ -1,0 +1,39 @@
+{% extends 'admin.base.html.twig' %}
+
+{% block dashboard %}
+<section class="gap-40">
+    <h1>Détails de la Catégorie</h1>
+
+    <div class="flex gap-20">
+        <a class="btn btn-primary" href="{{ path('admin_category_index') }}">Retour à la liste</a>
+
+        <a class="btn btn-primary" href="{{ path('admin_category_edit', { id: category.id }) }}">Modifier</a>
+
+        <a class="btn btn-red delete-action"
+            data-url="{{ path('admin_category_delete', { id: category.id }) }}">Supprimer</a>
+    </div>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>ID</th>
+                <td>{{ category.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ category.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<div class="modal-overlay" id="confirmModal">
+    <div class="modal-content flex flex-column gap-20">
+        <p>Êtes-vous sûr de vouloir supprimer cette catégorie ?</p>
+        <div class="flex justify-center gap-20">
+            <button class="btn btn-red" id="confirmDelete">Supprimer</button>
+            <button class="btn btn-primary" id="cancelDelete">Annuler</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

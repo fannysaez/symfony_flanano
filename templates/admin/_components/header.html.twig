@@ -1,0 +1,19 @@
+<header class="header flex flex-wrap justify-between gap-10">
+    <div class="flex flex-column">
+        <h3>Bienvenue,</h3>
+        <p>{{ app.user.email }} !</p>
+    </div>
+
+    <div class="desktop-nav flex gap-10">
+        <a class="btn btn-primary" href="{{ path('home_index') }}">
+            Flanano
+        </a>
+        <a class="btn btn-red" href="{{ path('app_logout') }}">
+            Déconnexion
+        </a>
+    </div>
+
+    <button id="admin-burger-btn" class="burger-btn" aria-label="Menu" type="button">
+        <img src="{{ asset('icons/icon-burger.svg') }}" alt="Menu">
+    </button>
+</header>

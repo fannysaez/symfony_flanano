@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+<section class="login-container flex flex-column justify-center gap-10">
+    {{ form_start(registrationForm) }}
+
+    <div>
+        <h1>Inscrivez-vous</h1>
+        <p>Déjà un compte ? <a class="text-link" href="{{ path('app_login') }}">Connectez-vous</a> !</p>
+    </div>
+
+    {{ form_errors(registrationForm) }}
+
+
+    {{ form_row(registrationForm.email) }}
+
+    {{ form_row(registrationForm.plainPassword,
+    { label: 'Password' }) }}
+
+    <div class="flex-row">
+        {{ form_widget(registrationForm.agreeTerms) }}
+        {{ form_label(registrationForm.agreeTerms) }}
+    </div>
+
+    <button class="btn-primary" type="submit">Inscription</button>
+
+    {{ form_end(registrationForm) }}
+</section>
+{% endblock %}

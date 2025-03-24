@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Flanano - {{ product.title }}{% endblock %}
+
+{% block main %}
+<section class="show-grid">
+    <img src="{{ asset(product.cover) }}" alt="{{ product.title }}">
+    <div class="show-right flex flex-column">
+        <div class="show-right-info flex flex-column gap-100">
+            <div class="flex flex-column gap-20">
+                <h1>{{ product.title }}</h1>
+                <h2>€ {{ product.getPriceTTC()|number_format(2, '.', ' ') }} TTC</h2>
+            </div>
+
+            <div class="flex flex-column gap-20">
+                <button class="btn-add-cart">Ajouter au panier</button>
+
+                <div class="flex align-item-center gap-10">
+                    <img class="check-icon" src="{{ asset('icons/icon-check.svg') }}" alt="Icon Check">
+                    <p>
+                        <span class="check-icon"></span>
+                        Livraison gratuite pour les commandes supérieures à <strong>60 EUR</strong>
+                    </p>
+                </div>
+
+                <div class="flex align-item-center gap-10">
+                    <img class="check-icon" src="{{ asset('icons/icon-check.svg') }}" alt="Icon Check">
+                    <p>
+                        <span class="check-icon"></span>
+                        Politique de retour facile <strong>(30 jours)</strong>
+                    </p>
+                </div>
+
+                <div class="flex align-item-center gap-10">
+                    <img class="check-icon" src="{{ asset('icons/icon-check.svg') }}" alt="Icon Check">
+                    <p>
+                        <span class="check-icon"></span>
+                        Garantie de <strong>2 ans</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-container flex flex-column gap-10">
+            <button class="accordion">Description</button>
+            <div class="panel">
+                <p>{{ product.description }}</p>
+            </div>
+        </div>
+
+        <div class="accordion-container flex flex-column gap-10">
+            <button class="accordion">Expédition et retours</button>
+            <div class="panel flex-column gap-10">
+                <p>Délai de livraison :</p>
+                <ul>
+                    <li>Europe de l'Ouest : 1 - 3 jours</li>
+                    <li>Reste de l'Europe : 3 - 5 jours</li>
+                    <li>Autres pays : 3 - 6 jours</li>
+                </ul>
+                <p>
+                    Livraison gratuite pour les commandes supérieures à 60 €.
+                    Retours possibles dans les 30 jours suivant l'achat.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ asset('js/accordion.js') }}" defer></script>
+</section>
+
+<section class="product-grid">
+    {% for product in products %}
+    {% include "_components/card.html.twig" %}
+    {% else %}
+    <p>Aucun produit disponible.</p>
+    {% endfor %}
+</section>
+{% endblock %}

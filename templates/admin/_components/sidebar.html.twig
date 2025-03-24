@@ -1,0 +1,46 @@
+<header class="sidebar admin-sidebar">
+    <nav>
+        <div class="sidebar-head">
+            <div class="flex flex-column align-item-left">
+                <img src="{{ asset('logo.svg') }}" alt="Logo Flanano">
+                <p class="p-min">Admin</p>
+            </div>
+
+            <button id="admin-close-btn" class="burger-btn" aria-label="Menu" type="button">
+                <img src="{{ asset('icons/icon-close.svg') }}" alt="Fermer">
+            </button>
+        </div>
+
+        <div class="mobile-only">
+            <a href="{{ path('app_logout') }}">
+                <div class="btn-nav-logout">
+                    <p>Déconnexion</p>
+                </div>
+            </a>
+
+            <a href="{{ path('home_index') }}">
+                <div class="btn-nav">
+                    <p>Flanano</p>
+                </div>
+            </a>
+        </div>
+
+        <a href="{{ path('admin_product_index') }}"
+            class="{{ app.request.attributes.get('_route') == 'admin_product_index' ? 'active' : '' }}">
+            <div
+                class="btn-nav {{ app.request.attributes.get('_route') == 'admin_product_index' ? 'btn-nav-active' : '' }}">
+                <p>Produits</p>
+            </div>
+        </a>
+
+        <a href="{{ path('admin_category_index') }}"
+            class="{{ app.request.attributes.get('_route') == 'admin_category_index' ? 'active' : '' }}">
+            <div
+                class="btn-nav {{ app.request.attributes.get('_route') == 'admin_category_index' ? 'btn-nav-active' : '' }}">
+                <p>Catégories</p>
+            </div>
+        </a>
+    </nav>
+</header>
+
+<div id="burger-overlay" class="burger-overlay"></div>

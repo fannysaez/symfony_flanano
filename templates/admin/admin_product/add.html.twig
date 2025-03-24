@@ -1,0 +1,16 @@
+{% extends 'admin.base.html.twig' %}
+
+{% block dashboard %}
+<section class="gap-40">
+    <a class="btn btn-primary" href="{{ path('admin_product_index') }}">Retour</a>
+    <h1>Ajouter un Produit</h1>
+
+    {{ form_start(form) }}
+
+    {{ form_widget(form) }}
+
+    <button class="btn btn-green" type="submit">Ajouter</button>
+
+    {{ form_end(form) }}
+</section>
+{% endblock %}

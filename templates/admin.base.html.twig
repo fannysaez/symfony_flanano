@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Flanano - Admin{% endblock %}</title>
+    <link rel="icon" href="{{ asset('favicon.svg') }}">
+    {% block stylesheets %}
+    {% endblock %}
+
+    {% block javascripts %}
+    {% block importmap %}{{ importmap('app.admin') }}{% endblock %}
+    <script src="{{ asset('js/admin/admin-burger-menu.js') }}" defer></script>
+    <script src="{{ asset('js/modal.js') }}" defer></script>
+    {% endblock %}
+</head>
+
+<body>
+    <main>
+        {% include "admin/_components/sidebar.html.twig" %}
+
+        <dashboard>
+            {% include "admin/_components/header.html.twig" %}
+            {% block dashboard %}{% endblock %}
+        </dashboard>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Flanano{% endblock %}</title>
+    <link rel="icon" href="{{ asset('favicon.svg') }}">
+    {% block stylesheets %}
+    {% endblock %}
+
+    {% block javascripts %}
+    {% block importmap %}{{ importmap('app') }}{% endblock %}
+    <script src="{{ asset('js/burger-menu.js') }}" defer></script>
+    <script src="{{ asset('js/hero.js') }}" defer></script>
+    {% endblock %}
+</head>
+
+<body>
+    {% include "_components/header.html.twig" %}
+
+    <main>
+        {% block main %}{% endblock %}
+    </main>
+
+    {% include "_components/footer.html.twig" %}
+</body>
+
+</html>

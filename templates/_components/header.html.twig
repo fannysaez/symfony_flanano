@@ -1,0 +1,59 @@
+<header class="header">
+    <div class="header-container flex items-center">
+        <div class="nav-container flex">
+            <div class="header-logo">
+                <a href="{{ path('home_index') }}"
+                    class="{{ app.request.attributes.get('_route') == 'home_index' ? 'active' : '' }}">
+                    <img src="{{ asset('logo.svg') }}" alt="Logo Flanano">
+                </a>
+            </div>
+
+            <nav id="main-nav" class="flex justify-between gap-20">
+                <div class="flex gap-20">
+                    <a href="{{ path('shop_index') }}"
+                        class="nav-link {{ app.request.attributes.get('_route') == 'shop_index' ? 'active' : '' }}">
+                        Tout</a>
+                    <a href="{{ path('shop_makeup') }}"
+                        class="nav-link {{ app.request.attributes.get('_route') == 'shop_makeup' ? 'active' : '' }}">
+                        Makeup</a>
+                    <a href="{{ path('shop_sunglasses') }}"
+                        class="nav-link {{ app.request.attributes.get('_route') == 'shop_sunglasses' ? 'active' : '' }}">
+                        Lunettes</a>
+                    <a href="{{ path('shop_watches') }}"
+                        class="nav-link {{ app.request.attributes.get('_route') == 'shop_watches' ? 'active' : '' }}">
+                        Montres</a>
+                    <a href="{{ path('shop_odyssey') }}"
+                        class="nav-link {{ app.request.attributes.get('_route') == 'shop_odyssey' ? 'active' : '' }}">
+                        Odyssey 25</a>
+                </div>
+
+                <div class="account-links flex gap-20">
+                    {% if app.user %}
+                    <a href="{{ path('app_account') }}"
+                        class="nav-link {{ app.request.attributes.get('_route') == 'app_account' ? 'active' : '' }}">
+                        Compte
+                    </a>
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('admin_product_index') }}"
+                        class="nav-link {{ app.request.attributes.get('_route') == 'admin_product_index' ? 'active' : '' }}">
+                        Back-office
+                    </a>
+                    {% endif %}
+
+                    {% else %}
+                    <a href="{{ path('app_login') }}"
+                        class="nav-link {{ app.request.attributes.get('_route') == 'app_login' ? 'active' : '' }}">
+                        Se connecter
+                    </a>
+                    {% endif %}
+                </div>
+            </nav>
+        </div>
+
+        <button id="burger-btn" class="burger-btn" aria-label="Menu" type="button">
+            <img id="burger-icon" src="{{ asset('icons/icon-burger.svg') }}" alt="Menu">
+            <img id="close-icon" src="{{ asset('icons/icon-close.svg') }}" alt="Fermer" class="hidden">
+        </button>
+    </div>
+</header>
